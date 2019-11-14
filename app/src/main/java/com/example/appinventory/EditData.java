@@ -8,8 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class EditData extends Activity implements View.OnClickListener {
+import com.example.appinventory.models.Barang;
 
+public class EditData extends Activity implements View.OnClickListener {
     private DBDataSource dataSource;
     private long id;
     private String harga;
@@ -27,38 +28,38 @@ public class EditData extends Activity implements View.OnClickListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_data);
-
-        edNama = (EditText) findViewById(R.id.editText_nama);
-        edHarga = (EditText) findViewById(R.id.editText_harga);
-        edMerk = (EditText) findViewById(R.id.editText_merk);
-        txId = (TextView) findViewById(R.id.text_id_barang);
-
+        //inisialisasi variabel
+        edNama = findViewById(R.id.editText_nama);
+        edHarga = findViewById(R.id.editText_harga);
+        edMerk = findViewById(R.id.editText_merk);
+        txId = findViewById(R.id.text_id_barang);
+        //buat sambungan baru ke database
         dataSource = new DBDataSource(this);
         dataSource.open();
-
+        // ambil data barang dari extras
         Bundle bun = this.getIntent().getExtras();
         id = bun.getLong("id");
         harga = bun.getString("harga");
         merk = bun.getString("merk");
         nama = bun.getString("nama");
-
+        //masukkan data-data barang tersebut ke field editor
         txId.append(String.valueOf(id));
         edNama.setText(nama);
         edHarga.setText(harga);
         edMerk.setText(merk);
-
-        btnSave = (Button) findViewById(R.id.button_save_update);
+        //set listener pada tombol
+        btnSave = findViewById(R.id.button_save_update);
         btnSave.setOnClickListener(this);
-        btnCancel = (Button) findViewById(R.id.button_cancel_update);
+        btnCancel = findViewById(R.id.button_cancel_update);
         btnCancel.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-        switch(v.getId())
-        {
-            case R.id.button_save_update :
+        switch (v.getId()) {
+            // apabila tombol save diklik (update barang)
+            case R.id.button_save_update:
                 barang = new Barang();
                 barang.setHarga_barang(edHarga.getText().toString());
                 barang.setNama_barang(edNama.getText().toString());
@@ -70,8 +71,8 @@ public class EditData extends Activity implements View.OnClickListener {
                 EditData.this.finish();
                 dataSource.close();
                 break;
-
-            case R.id.button_cancel_update :
+            // apabila tombol cancel diklik, finish activity
+            case R.id.button_cancel_update:
                 finish();
                 dataSource.close();
                 break;

@@ -4,12 +4,10 @@
     android:versionCode="3"
     android:versionName="1.0.0.4a">
 
-    <uses-permission
-        android:name="android.permission.INTERNET" />
-    <uses-permission
-        android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-sdk android:targetSdkVersion="16" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -18,26 +16,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
-            android:name="com.example.appinventory.CreateData"
-            android:label="@string/title_activity_main">
-        </activity>
+            android:name=".CreateData"
+            android:label="@string/title_activity_main"></activity>
         <activity
             android:name=".Menu"
-            android:label="@string/title_activity_main" >
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".ViewData"
-            android:label="@string/title_view" >
-        </activity>
+            android:label="@string/title_activity_main"></activity>
         <activity
             android:name=".EditData"
-            android:label="@string/title_edit" >
+            android:label="@string/title_activity_main" >
         </activity>
     </application>
 
