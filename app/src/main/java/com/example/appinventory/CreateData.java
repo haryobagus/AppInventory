@@ -52,10 +52,10 @@ public class CreateData extends Activity implements View.OnClickListener {
 
                 barang = dataSource.createBarang(nama, merk, harga);
 
-                Toast.makeText(this, "masuk Barang\n" +
-                                "nama" + barang.getNama_barang() +
-                                "merk" + barang.getMerk_barang() +
-                                "harga" + barang.getHarga_barang(),
+                Toast.makeText(this, "Masuk Barang \n" +
+                                "\nNama : " + barang.getNama_barang() +
+                                "\nMerk : " + barang.getMerk_barang() +
+                                "\nHarga : " + barang.getHarga_barang(),
                         Toast.LENGTH_LONG).show();
                 break;
         }
